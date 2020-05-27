@@ -75,9 +75,15 @@ router.get('/search', auth, async (req, res) => {
         //     console.log(docs);
         // });
         let employee = null
-        await Employee.find({ fullname: { $regex: `${req.query.search}`, $options: "i" } }, function (err, docs) {
-            // console.log("Partial Search Begins");
-            // console.log(docs);
+        await Employee.find({
+            $or:
+                [{ fullname: { $regex: `${req.query.search}`, $options: "i" } },
+                { gender: { $regex: `${req.query.search}`, $options: "i" } },
+                { contacts: { $regex: `${req.query.search}`, $options: "i" } },
+                { dateOfCreate: { $regex: `${req.query.search}`, $options: "i" } },
+                { salary: { $regex: `${req.query.search}`, $options: "i" } },
+                { position: { $regex: `${req.query.search}`, $options: "i" } }]
+        }, function (err, docs) {
             employee = docs
         });
         res.status(201).json({ employee })

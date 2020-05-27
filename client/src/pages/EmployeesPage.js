@@ -19,7 +19,6 @@ export const EmployeesPage = ({ employees, getEmployees, getTotalItemsCount, cur
     let rigthPortionPageNumber = portionNumber * portionSize
 
     const handleSubmit = (formData) => {
-        console.log(formData)
         searchEmployees(formData.search)
     }
 

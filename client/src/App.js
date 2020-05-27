@@ -12,16 +12,16 @@ import EmployeesPageContainer from './pages/EmployeesPageContainer';
 import { Loader } from './components/Loader';
 
 const App = (props) => {
-  const [initialized, setInitializedSucsess] = useState(false)
-  useEffect(() => {
-    if (localStorage.getItem('token').length) {
-      setInitializedSucsess(true)
-    };
-  }, [setInitializedSucsess])
+  // const [initialized, setInitializedSucsess] = useState(false)
+  // // useEffect(() => {
+  // //   if (localStorage.getItem('token')) {
+  // //     setInitializedSucsess(true)
+  // //   };
+  // // }, [setInitializedSucsess])
 
-  if (!initialized) {
-    return <Loader />
-  }
+  // // if (!initialized) {
+  // //   return <Loader />
+  // // }
 
   return (<div>
     <NavbarContainer />
