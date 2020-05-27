@@ -121,6 +121,19 @@ export const getEmployees = (currentPage, pageSize) => async (dispatch) => {
         }
     } catch (e) { }
 }
+export const searchEmployees = (search) => async (dispatch) => {
+    try {
+        let res = await employeeAPI.searchEmployee(search);
+        let data = res.employee
+        let quantity = res.employee.length
+        if (data) {
+            dispatch(actions.getEmployees(data));
+        }
+        if (quantity) {
+            dispatch(actions.setTotalItemsCount(quantity));
+        }
+    } catch (e) { }
+}
 export const getTotalItemsCount = (currentPage) => async (dispatch) => {
     try {
         let data = await employeeAPI.getEmployeesTotalCount(currentPage);

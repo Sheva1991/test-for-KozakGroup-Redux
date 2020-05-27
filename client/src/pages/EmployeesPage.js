@@ -3,9 +3,10 @@ import { useState } from 'react'
 import { useEffect } from 'react'
 import { Loader } from '../components/Loader'
 import { EmployeeListContainer } from '../components/EmployeeListContainer'
+import { SearchReduxForm } from '../forms/SearchForm'
 
 export const EmployeesPage = ({ employees, getEmployees, getTotalItemsCount, currentPage,
-    pageSize, totalItemsCount, portionSize, setCurrentPage, updateEmployee, deleteEmployee }) => {
+    pageSize, totalItemsCount, portionSize, setCurrentPage, updateEmployee, deleteEmployee, searchEmployees }) => {
 
     let pagesCount = Math.ceil(totalItemsCount / pageSize)
     let pages = [];
@@ -17,10 +18,16 @@ export const EmployeesPage = ({ employees, getEmployees, getTotalItemsCount, cur
     let leftPortionPageNumber = (portionNumber - 1) * portionSize + 1
     let rigthPortionPageNumber = portionNumber * portionSize
 
+    const handleSubmit = (formData) => {
+        console.log(formData)
+        searchEmployees(formData.search)
+    }
+
     useEffect(() => {
         getEmployees(currentPage, pageSize)
         getTotalItemsCount(currentPage)
     }, [getEmployees, getTotalItemsCount, currentPage, pageSize])
+
 
     if (!employees) {
         return <Loader />
@@ -28,6 +35,7 @@ export const EmployeesPage = ({ employees, getEmployees, getTotalItemsCount, cur
 
     return (
         <>
+            <SearchReduxForm onSubmit={handleSubmit} />
             {employees && <EmployeeListContainer currentPage={currentPage} employees={employees} updateEmployee={updateEmployee} deleteEmployee={deleteEmployee} />}
             <ul className="pagination">
                 {portionNumber > 1 &&
