@@ -45,7 +45,7 @@ export const login = (login, password) => async (dispatch) => {
 
 export const logout = () => async (dispatch) => {
     dispatch(actions.setAuthUserData(null, null, null, false));
-    localStorage.removeItem('storageName')
+    localStorage.removeItem('token')
 
 }
 
