@@ -9,7 +9,7 @@ const SearchForm = (props) => {
                 <Field
                     name="search"
                     component="input"
-                    type="search"
+                    type="text"
                     placeholder="Search"
                 />
             </div>
