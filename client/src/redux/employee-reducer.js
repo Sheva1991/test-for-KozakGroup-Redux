@@ -1,16 +1,7 @@
 import { employeeAPI } from "../api/employee-api";
 
 let initialState = {
-    EmployeeData: [
-        {
-            fullname: '',
-            gender: '',
-            contacts: '',
-            dateOfCreate: '',
-            salary: '',
-            position: '',
-        }
-    ],
+    EmployeeData: [],
     currentPage: 1,
     pageSize: 5,
     portionSize: 3,
