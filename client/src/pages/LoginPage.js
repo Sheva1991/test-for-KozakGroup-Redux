@@ -34,7 +34,7 @@ const LoginForm = (props) => {
                     <span className="card-title">Авторизация</span>
                     <form onSubmit={props.handleSubmit}>
                         <div className='input-field'>{createField('Login', 'login', [required, maxLength50], Input)}</div>
-                        <div className='input-field'>{createField('Password', 'password', [required, maxLength50], Input, { type: 'password' })}</div>
+                        <div className='input-field'>{createField('Password', 'password', [required, maxLength50], Input, 'password')}</div>
                         <div>
                             <button
                                 className="btn yellow darken-4"

@@ -30,6 +30,7 @@ export function createField(placeholder,
     name,
     validadtors,
     component,
+    type,
     value,
     props = {}, text = '') {
     return (
@@ -38,6 +39,7 @@ export function createField(placeholder,
                 validate={validadtors}
                 component={component}
                 value={value}
+                type={type}
                 {...props} />
         </div>
     )
